@@ -20,7 +20,7 @@
         <TextView
             android:id="@+id/tvContainerDescription"
             android:layout_width="match_parent"
-            android:layout_height="82dp"
+            android:layout_height="wrap_content"
             android:layout_weight=".8"
             android:text="Meaningful text goes here..."
             tools:text="Meaningful text goes here..." />
@@ -28,17 +28,10 @@
         <ImageView
             android:id="@+id/ivContainerImage"
             android:layout_width="match_parent"
-            android:layout_height="294dp"
+            android:layout_height="148dp"
             android:layout_weight=".8"
             android:background="#5F5F5F"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-        <EditText
-            android:id="@+id/etDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight=".8"
-            android:ems="10"
-            android:inputType="date" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>
