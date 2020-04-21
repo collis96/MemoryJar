@@ -8,7 +8,6 @@ import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,47 +15,53 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.thekhaeng.recyclerviewmargin.LayoutMarginDecoration;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
 
-    private Button newBtn;
+    public static ApplicationDatabase applicationDatabase;
+
+    private Button newMemory;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private BottomNavigationView botNav;
-    public static Database database;
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        database = Room.databaseBuilder(getApplicationContext(),Database.class,"postdb").allowMainThreadQueries().build();
-        List<Post> posts = database.dao().getPosts();
+        applicationDatabase = Room.databaseBuilder(getApplicationContext(), ApplicationDatabase.class,"postdb").allowMainThreadQueries().build();
+        List<Memory> memories = applicationDatabase.dao().getPosts();
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
+        recyclerView.addItemDecoration(new LayoutMarginDecoration(1, 20));
 
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        mAdapter = new MyAdapter(posts);
+        mAdapter = new MemoryListAdapter(memories);
         recyclerView.setAdapter(mAdapter);
 
-        newBtn = findViewById(R.id.btnNew);
-        newBtn.setOnClickListener(new View.OnClickListener() {
+        newMemory = findViewById(R.id.btnNew);
+        newMemory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent newMem = new Intent(MainActivity.this, NewMemActivity.class);
                 startActivity(newMem);
             }
         });
+
 
         botNav = findViewById(R.id.bottom_nav);
         Menu menu = botNav.getMenu();
@@ -82,15 +87,47 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+    public class MemoryListAdapter extends RecyclerView.Adapter<MemoryListAdapter.MemoryHolder> {
 
-        private List<Post> posts;
+        private List<Memory> memories;
 
-        public class MyViewHolder extends RecyclerView.ViewHolder {
+        public MemoryListAdapter(List<Memory> mMemories) {
+            memories = mMemories;
+        }
+
+        @NonNull
+        @Override
+        public MemoryHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.container, parent, false);
+            MemoryHolder vh = new MemoryHolder(view);
+            return vh;
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull MemoryHolder holder, int position) {
+            Memory memory = memories.get(position);
+            holder.setTitle(memory.getMemoryTitle());
+            holder.setDescription(memory.getMemoryDescription());
+            holder.setListeners(memory, position);
+        }
+
+        @Override
+        public int getItemCount() {
+            return memories.size();
+        }
+
+        public class MemoryHolder extends RecyclerView.ViewHolder {
+
             View mView;
-            public MyViewHolder(View v){
+            private Button editMemory;
+            private Button deleteMemory;
+
+            public MemoryHolder(View v){
                 super(v);
                 mView = v;
+                editMemory = mView.findViewById(R.id.btnEdit);
+                deleteMemory = mView.findViewById(R.id.btnDelete);
             }
 
             public void setTitle(String title){
@@ -102,31 +139,26 @@ public class MainActivity extends AppCompatActivity {
                 TextView post_desc = mView.findViewById(R.id.tvContainerDescription);
                 post_desc.setText(desc);
             }
-        }
 
-        public MyAdapter(List<Post> mPosts) {
-            posts = mPosts;
-        }
+            public void setListeners(final Memory memory1, final int position){
 
-        @NonNull
-        @Override
-        public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.container, parent, false);
-            MyViewHolder vh = new MyViewHolder(view);
-            return vh;
-        }
+                editMemory.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent editMem = new Intent( MainActivity.this, EditMemActivity.class);
+                        editMem.putExtra("int_value", memory1.getMemoryId());
+                        startActivity(editMem);
+                    }
+                });
 
-        @Override
-        public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-            Post post = posts.get(position);
-            holder.setTitle(post.getTitle());
-            holder.setDescription(post.getDescription());
-        }
-
-        @Override
-        public int getItemCount() {
-            return posts.size();
+                deleteMemory.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        MainActivity.applicationDatabase.dao().delete(memory1);
+                        notifyItemRemoved(position);
+                    }
+                });
+            }
         }
     }
 }

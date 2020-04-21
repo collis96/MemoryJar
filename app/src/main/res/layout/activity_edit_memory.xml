@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/etNewMemAddTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/tvNewMemAddTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvNewMemAddTitle"
+        app:layout_constraintTop_toTopOf="@+id/tvNewMemAddTitle" />
+
+    <TextView
+        android:id="@+id/tvNewMemAddTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="Title:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEditMemory" />
+
+    <TextView
+        android:id="@+id/tvNewMemAddDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Description:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/tvNewMemAddTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvNewMemAddTitle" />
+
+    <EditText
+        android:id="@+id/etNewMemAddDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toBottomOf="@+id/tvNewMemAddDesc"
+        app:layout_constraintStart_toStartOf="@+id/etNewMemAddTitle"
+        app:layout_constraintTop_toTopOf="@+id/tvNewMemAddDesc" />
+
+    <Button
+        android:id="@+id/btnNewMemAddImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:text="Edit Photo"
+        app:layout_constraintBottom_toBottomOf="@+id/ivNewMemImgPreview"
+        app:layout_constraintStart_toEndOf="@+id/ivNewMemImgPreview"
+        app:layout_constraintTop_toTopOf="@+id/ivNewMemImgPreview"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnNewMemAddVideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Edit Video"
+        app:layout_constraintStart_toStartOf="@+id/btnNewMemAddImg"
+        app:layout_constraintTop_toBottomOf="@+id/btnNewMemAddImg" />
+
+    <Button
+        android:id="@+id/btnNewMemAddMusic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Edit Music"
+        app:layout_constraintStart_toStartOf="@+id/btnNewMemAddVideo"
+        app:layout_constraintTop_toBottomOf="@+id/btnNewMemAddVideo" />
+
+    <Button
+        android:id="@+id/btnNewMemPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Update Memory"
+        app:layout_constraintStart_toStartOf="@+id/ivNewMemImgPreview"
+        app:layout_constraintTop_toBottomOf="@+id/ivNewMemImgPreview" />
+
+    <ImageView
+        android:id="@+id/ivNewMemImgPreview"
+        android:layout_width="168dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintStart_toStartOf="@+id/tvNewMemAddDesc"
+        app:layout_constraintTop_toBottomOf="@+id/tvNewMemAddDesc"
+        app:srcCompat="@drawable/nophoto" />
+
+    <TextView
+        android:id="@+id/tvEditMemory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:text="Edit memory"
+        android:textColor="@color/nav_foreground"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
