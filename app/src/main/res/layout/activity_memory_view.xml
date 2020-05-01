@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvMemoryTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="Title"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvMemoryDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:text="Description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvMemoryCategory"
+        app:layout_constraintTop_toBottomOf="@+id/tvMemoryCategory" />
+
+    <ImageView
+        android:id="@+id/ivMemoryImage"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="@+id/tvMemoryTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvMemoryDesc"
+        app:srcCompat="@drawable/no_media_selected" />
+
+    <VideoView
+        android:id="@+id/vvMemoryVideo"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="@+id/ivMemoryImage"
+        app:layout_constraintTop_toBottomOf="@+id/tvMemoryDesc" />
+
+    <Button
+        android:id="@+id/btnMemoryEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="32dp"
+        android:text="Edit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnMemoryCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="@android:string/cancel"
+        app:layout_constraintStart_toEndOf="@+id/btnMemoryEdit"
+        app:layout_constraintTop_toTopOf="@+id/btnMemoryEdit" />
+
+    <TextView
+        android:id="@+id/tvMemoryCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Category"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="@+id/tvMemoryDate"
+        app:layout_constraintTop_toBottomOf="@+id/tvMemoryDate" />
+
+    <TextView
+        android:id="@+id/tvMemoryDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Date"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/tvMemoryTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvMemoryTitle" />
+</androidx.constraintlayout.widget.ConstraintLayout>

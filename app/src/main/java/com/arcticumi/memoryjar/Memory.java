@@ -4,8 +4,6 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.util.Date;
-
 @Entity(tableName = "memories")
 public class Memory {
 
@@ -19,16 +17,13 @@ public class Memory {
     private String memoryDescription;
 
     @ColumnInfo(name = "memory_date")
-    private Date memoryDate;
+    private String memoryDate;
 
-    @ColumnInfo(name = "memory_img_url")
-    private String memoryImgUrl;
+    @ColumnInfo(name = "memory_date_numeric")
+    private String memoryDateNumeric;
 
-    @ColumnInfo(name = "memory_video_url")
-    private String memoryVideoUrl;
-
-    @ColumnInfo(name = "memory_music_url")
-    private String memoryMusicUrl;
+    @ColumnInfo(name = "memory_media_uri")
+    private String memoryMediaUri;
 
     @ColumnInfo(name = "memory_is_favourite")
     private int memoryIsFavourite;
@@ -39,28 +34,20 @@ public class Memory {
     @ColumnInfo(name = "memory_rating")
     private int memoryRating;
 
-    public Date getMemoryDate() {
+    public String getMemoryDateNumeric() {
+        return memoryDateNumeric;
+    }
+
+    public void setMemoryDateNumeric(String memoryDateNumeric) {
+        this.memoryDateNumeric = memoryDateNumeric;
+    }
+
+    public String getMemoryDate() {
         return memoryDate;
     }
 
-    public void setMemoryDate(Date memoryDate) {
+    public void setMemoryDate(String memoryDate) {
         this.memoryDate = memoryDate;
-    }
-
-    public String getMemoryVideoUrl() {
-        return memoryVideoUrl;
-    }
-
-    public void setMemoryVideoUrl(String memoryVideoUrl) {
-        this.memoryVideoUrl = memoryVideoUrl;
-    }
-
-    public String getMemoryMusicUrl() {
-        return memoryMusicUrl;
-    }
-
-    public void setMemoryMusicUrl(String memoryMusicUrl) {
-        this.memoryMusicUrl = memoryMusicUrl;
     }
 
     public int getMemoryIsFavourite() {
@@ -111,11 +98,11 @@ public class Memory {
         this.memoryDescription = memoryDescription;
     }
 
-    public String getMemoryImgUrl() {
-        return memoryImgUrl;
+    public String getMemoryMediaUri() {
+        return memoryMediaUri;
     }
 
-    public void setMemoryImgUrl(String memoryImgUrl) {
-        this.memoryImgUrl = memoryImgUrl;
+    public void setMemoryMediaUri(String memoryMediaUri) {
+        this.memoryMediaUri = memoryMediaUri;
     }
 }

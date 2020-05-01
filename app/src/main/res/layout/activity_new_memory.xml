@@ -48,11 +48,11 @@
         android:id="@+id/tvNewMemAddDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:text="Description:"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/tvNewMemAddTitle"
-        app:layout_constraintTop_toBottomOf="@+id/tvNewMemAddTitle" />
+        app:layout_constraintStart_toStartOf="@+id/tvCategory"
+        app:layout_constraintTop_toBottomOf="@+id/etCategory" />
 
     <EditText
         android:id="@+id/etNewMemAddDesc"
@@ -61,55 +61,85 @@
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toBottomOf="@+id/tvNewMemAddDesc"
-        app:layout_constraintStart_toStartOf="@+id/etNewMemAddTitle"
-        app:layout_constraintTop_toTopOf="@+id/tvNewMemAddDesc" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvNewMemAddDesc"
+        app:layout_constraintStart_toStartOf="@+id/etNewMemAddTitle" />
 
     <Button
-        android:id="@+id/btnNewMemAddImg"
+        android:id="@+id/btnNewMemAddMedia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:text="Add Photo"
-        app:layout_constraintBottom_toBottomOf="@+id/ivNewMemImgPreview"
-        app:layout_constraintStart_toEndOf="@+id/ivNewMemImgPreview"
-        app:layout_constraintTop_toTopOf="@+id/ivNewMemImgPreview"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:text="Add Media"
+        app:layout_constraintBottom_toTopOf="@+id/btnNewMemPost"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivNewMemImgPreview"
         app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/btnNewMemAddVideo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Add video"
-        app:layout_constraintStart_toStartOf="@+id/btnNewMemAddImg"
-        app:layout_constraintTop_toBottomOf="@+id/btnNewMemAddImg" />
-
-    <Button
-        android:id="@+id/btnNewMemAddMusic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Add Music"
-        app:layout_constraintStart_toStartOf="@+id/btnNewMemAddVideo"
-        app:layout_constraintTop_toBottomOf="@+id/btnNewMemAddVideo" />
 
     <Button
         android:id="@+id/btnNewMemPost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="24dp"
         android:text="Post"
-        app:layout_constraintStart_toStartOf="@+id/ivNewMemImgPreview"
-        app:layout_constraintTop_toBottomOf="@+id/ivNewMemImgPreview" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/btnNewMemAddMedia" />
 
     <ImageView
         android:id="@+id/ivNewMemImgPreview"
-        android:layout_width="168dp"
+        android:layout_width="160dp"
         android:layout_height="160dp"
-        android:layout_marginTop="48dp"
-        app:layout_constraintStart_toStartOf="@+id/tvNewMemAddDesc"
-        app:layout_constraintTop_toBottomOf="@+id/tvNewMemAddDesc"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNewMemAddDesc"
         app:srcCompat="@drawable/nophoto" />
+
+    <TextView
+        android:id="@+id/tvCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Category"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/tvNewMemAddTitle"
+        app:layout_constraintTop_toBottomOf="@+id/etNewMemAddTitle" />
+
+    <EditText
+        android:id="@+id/etCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvCategory"
+        app:layout_constraintStart_toStartOf="@+id/etNewMemAddDesc" />
+
+    <VideoView
+        android:id="@+id/vVNewMemVideoPreview"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNewMemAddDesc" />
+
+    <ImageView
+        android:id="@+id/ivNoMediaSelected"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNewMemAddDesc"
+        app:srcCompat="@drawable/no_media_selected" />
+
+    <Button
+        android:id="@+id/btnMemoryCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="@android:string/cancel"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnNewMemPost"
+        app:layout_constraintStart_toEndOf="@+id/btnNewMemPost" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

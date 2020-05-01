@@ -14,10 +14,28 @@ public interface Dao {
     public void addMem(Memory memory);
 
     @Query("SELECT * FROM memories")
-    public List<Memory> getPosts();
+    public List<Memory> getMemories();
 
     @Query("SELECT * FROM memories WHERE memoryId LIKE :id")
     public Memory findById(int id);
+
+    @Query("SELECT * FROM memories ORDER BY memory_date_numeric ASC")
+    public List<Memory> getOldest();
+
+    @Query("SELECT * FROM memories ORDER BY memory_date_numeric DESC")
+    public List<Memory> getNewest();
+
+    @Query("SELECT * FROM memories WHERE memory_category LIKE :cat")
+    public List<Memory> getByCategory(String cat);
+
+    @Query("SELECT * FROM memories ORDER BY RANDOM() LIMIT 1")
+    public Memory getRandom();
+
+    @Query("SELECT * FROM memories WHERE memory_is_favourite = 1")
+    public List<Memory> getFavourites();
+
+    @Query("SELECT * FROM memories WHERE memory_date_numeric LIKE :date")
+    public List<Memory> getByDate(String date);
 
     @Update
     public void updateMemory(Memory memory);

@@ -3,4 +3,8 @@
     <string name="nav_random">random</string>
     <string name="nav_home">home</string>
     <string name="nav_calendar">calendar</string>
+    <string name="no_filter">No filter</string>
+    <string name="most_recent">Most recent</string>
+    <string name="oldest_first">Oldest first</string>
+    <string name="by_category">By category</string>
 </resources>

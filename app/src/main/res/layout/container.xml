@@ -12,7 +12,7 @@
         android:background="@android:color/transparent">
 
         <LinearLayout
-            android:id="@+id/linearLayout"
+            android:id="@+id/llContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -23,7 +23,24 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".8"
                 android:text="Title"
+                android:textSize="18sp"
                 android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvContainerDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".8"
+                android:text="Date Here"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvContainerCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".8"
+                android:text="Category Here"
+                android:textStyle="italic" />
 
             <TextView
                 android:id="@+id/tvContainerDescription"
@@ -32,6 +49,12 @@
                 android:layout_weight=".8"
                 android:text="Meaningful text goes here..."
                 tools:text="Meaningful text goes here..." />
+
+            <VideoView
+                android:id="@+id/vvContainerVideo"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_weight=".8" />
 
             <ImageView
                 android:id="@+id/ivContainerImage"
@@ -52,7 +75,7 @@
             android:text="Edit"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/llContainer" />
 
         <Button
             android:id="@+id/btnDelete"
@@ -62,7 +85,15 @@
             android:text="Delete"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btnEdit"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/llContainer" />
+
+        <ImageView
+            android:id="@+id/ivContainerFavourite"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/llContainer"
+            app:srcCompat="@drawable/outline_star_border_black_48dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
